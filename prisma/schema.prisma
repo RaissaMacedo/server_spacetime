@@ -1,6 +1,7 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
+// "npx prisma migrate dev" é um comando para salvar no banco de dado
 generator client {
   provider = "prisma-client-js"
 }
@@ -11,6 +12,21 @@ datasource db {
 }
 
 model User {
-  id   String @id @default(uuid()) //primekey
-  name String
+  id        String   @id @default(uuid()) //primekey
+  gitHubId  Int      @unique
+  name      String
+  login     String // usuario do gitHub
+  avatarUrl String
+  memories  Memory[] //relacionamento com memory
+}
+
+model Memory {
+  id       String   @id @default(uuid())
+  userId   String
+  coverUrl String
+  content  String
+  isPublic Boolean
+  createAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id])
 }

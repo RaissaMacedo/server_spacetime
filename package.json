@@ -15,10 +15,13 @@
     "@types/node": "^20.2.3",
     "eslint": "^8.41.0",
     "prisma": "^4.14.1",
+    "tsx": "^3.12.7",
     "typescript": "^5.0.4"
   },
   "dependencies": {
+    "@fastify/cors": "^8.3.0",
     "@prisma/client": "^4.14.1",
-    "fastify": "^4.17.0"
+    "fastify": "^4.17.0",
+    "zod": "^3.21.4"
   }
 }
